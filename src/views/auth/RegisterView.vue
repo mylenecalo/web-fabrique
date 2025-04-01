@@ -25,7 +25,7 @@ function onClick() {
       <v-main>
         <v-container>
           <v-row>
-            <v-col cols="12" md="6" class="mx-auto">
+            <v-col cols="12" md="6" class="mx-auto pt-16">
               <v-card class="mx-auto" prepend-icon="mdi-account-plus" subtitle="Register" elevation="24">
                 <template v-slot:title>
                   <span class="font-weight-black">Fabrique</span>
@@ -66,7 +66,7 @@ function onClick() {
         </v-container>
       </v-main>
 
-      <v-footer color="grey-lighten-1" border app>2024 - Fabrique</v-footer>
+      <v-footer color="grey-lighten-1" border app>2025 - Fabrique</v-footer>
     </v-app>
   </v-responsive>
 </template>

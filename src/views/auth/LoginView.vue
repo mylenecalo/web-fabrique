@@ -28,7 +28,7 @@ const { mobile } = useDisplay()
                   <LoginForm> </LoginForm>
                   <v-divider class="my-5"></v-divider>
 
-                  <h5 class="text-center">Don't have an account? <RouterLink class="text-pink-lighten-2" to="/register">Click here to Register</RouterLink></h5>
+                  <h5 class="text-center">Don't have an account? <RouterLink class="text-pink-lighten-2 font-weight-black" to="/register">Click here to Register</RouterLink></h5>
                 </v-card-text>
               </v-card>
             </v-col>

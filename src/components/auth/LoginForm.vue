@@ -6,8 +6,6 @@ import { useRouter } from 'vue-router'
 import AlertNotification from '../common/AlertNotification.vue'
 const router = useRouter()
 
-// Utilize pre-defined vue functions
-
 // Load Variables
 const formDataDefault = {
   email: '',
@@ -60,31 +58,63 @@ const onFormSubmit = () => {
     :form-success-message="formAction.formSuccessMessage"
     :form-error-message="formAction.formErrorMessage"
   ></AlertNotification>
-  <v-form ref="refVForm" @submit.prevent="onFormSubmit">
+  
+  <v-form ref="refVForm" @submit.prevent="onFormSubmit" class="login-form">
     <v-text-field
       v-model="formData.email"
       label="Email"
-      prepend-inner-icon="mdi-email"
+      prepend-inner-icon="mdi-email-outline"
+      variant="outlined"
+      color="pink-darken-3"
+      class="mb-4 rounded-lg"
+      hide-details="auto"
       :rules="[requiredValidator, emailValidator]"
     ></v-text-field>
+    
     <v-text-field
       v-model="formData.password"
-      prepend-inner-icon="mdi-lock"
+      prepend-inner-icon="mdi-lock-outline"
       label="Password"
+      variant="outlined"
+      color="pink-darken-3"
+      class="mb-6 rounded-lg"
+      hide-details="auto"
       :type="isPasswordVisible ? 'text' : 'password'"
       :append-inner-icon="isPasswordVisible ? 'mdi-eye-off' : 'mdi-eye'"
       @click:append-inner="isPasswordVisible = !isPasswordVisible"
       :rules="[requiredValidator]"
     ></v-text-field>
+    
     <v-btn
-      class="mt-2"
       type="submit"
       block
-      color="pink-darken-4"
-      prepend-icon="mdi-login"
+      color="pink-darken-3"
+      size="large"
+      class="mb-4 text-capitalize"
+      rounded="pill"
+      elevation="1"
       :disabled="formAction.formProcess"
       :loading="formAction.formProcess"
-      >Login</v-btn
     >
+      Sign In
+    </v-btn>
   </v-form>
 </template>
+
+<style scoped>
+.login-form {
+  max-width: 100%;
+}
+
+:deep(.v-field__outline) {
+  border-radius: 12px !important;
+}
+
+:deep(.v-field--variant-outlined .v-field__outline__start) {
+  border-radius: 12px 0 0 12px !important;
+}
+
+:deep(.v-field--variant-outlined .v-field__outline__end) {
+  border-radius: 0 12px 12px 0 !important;
+}
+</style>

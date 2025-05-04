@@ -80,12 +80,16 @@ const onFormSubmit = () => {
     :form-error-message="formAction.formErrorMessage"
   ></AlertNotification>
 
-  <v-form ref="refVForm" @submit.prevent="onFormSubmit">
+  <v-form ref="refVForm" @submit.prevent="onFormSubmit" class="register-form">
     <v-row dense>
       <v-col cols="12" sm="6">
         <v-text-field
           v-model="formData.firstname"
-          label="Firstname"
+          label="First Name"
+          variant="outlined"
+          color="pink-darken-3"
+          class="mb-3 rounded-lg"
+          hide-details="auto"
           :rules="[requiredValidator]"
         ></v-text-field>
       </v-col>
@@ -93,7 +97,11 @@ const onFormSubmit = () => {
       <v-col cols="12" sm="6">
         <v-text-field
           v-model="formData.lastname"
-          label="Lastname"
+          label="Last Name"
+          variant="outlined"
+          color="pink-darken-3"
+          class="mb-3 rounded-lg"
+          hide-details="auto"
           :rules="[requiredValidator]"
         ></v-text-field>
       </v-col>
@@ -103,6 +111,10 @@ const onFormSubmit = () => {
           v-model="formData.email"
           label="Email"
           prepend-inner-icon="mdi-email-outline"
+          variant="outlined"
+          color="pink-darken-3"
+          class="mb-3 rounded-lg"
+          hide-details="auto"
           :rules="[requiredValidator, emailValidator]"
         ></v-text-field>
       </v-col>
@@ -112,6 +124,10 @@ const onFormSubmit = () => {
           v-model="formData.password"
           prepend-inner-icon="mdi-lock-outline"
           label="Password"
+          variant="outlined"
+          color="pink-darken-3"
+          class="mb-3 rounded-lg"
+          hide-details="auto"
           :type="isPasswordVisible ? 'text' : 'password'"
           :append-inner-icon="isPasswordVisible ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="isPasswordVisible = !isPasswordVisible"
@@ -122,7 +138,11 @@ const onFormSubmit = () => {
       <v-col cols="12" sm="6">
         <v-text-field
           v-model="formData.password_confirmation"
-          label="Password Confirmation"
+          label="Confirm Password"
+          variant="outlined"
+          color="pink-darken-3"
+          class="mb-3 rounded-lg"
+          hide-details="auto"
           :type="isPasswordConfirmVisible ? 'text' : 'password'"
           :append-inner-icon="isPasswordConfirmVisible ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="isPasswordConfirmVisible = !isPasswordConfirmVisible"
@@ -134,16 +154,40 @@ const onFormSubmit = () => {
       </v-col>
     </v-row>
 
+    <div class="mt-4 mb-2 text-body-2">
+      By creating an account, you agree to our <a href="#" class="text-decoration-none text-pink-lighten-2">Terms of Service</a> and <a href="#" class="text-decoration-none text-pink-lighten-2">Privacy Policy</a>.
+    </div>
+
     <v-btn
-      class="mt-2"
+      class="mt-4"
       type="submit"
-      color="pink-darken-4"
-      prepend-icon="mdi-account-plus"
+      color="pink-darken-3"
+      size="large"
+      rounded="pill"
+      elevation="1"
       :disabled="formAction.formProcess"
       :loading="formAction.formProcess"
       block
     >
-      Register
+      Create Account
     </v-btn>
   </v-form>
 </template>
+
+<style scoped>
+.register-form {
+  max-width: 100%;
+}
+
+:deep(.v-field__outline) {
+  border-radius: 12px !important;
+}
+
+:deep(.v-field--variant-outlined .v-field__outline__start) {
+  border-radius: 12px 0 0 12px !important;
+}
+
+:deep(.v-field--variant-outlined .v-field__outline__end) {
+  border-radius: 0 12px 12px 0 !important;
+}
+</style>

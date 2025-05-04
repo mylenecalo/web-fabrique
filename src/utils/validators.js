@@ -1,4 +1,3 @@
-
 // 👉 IsEmpty
 export const isEmpty = (value) => {
   // Null, undefined, or empty string
@@ -49,12 +48,12 @@ export const emailValidator = (value) => {
 
 // 👉 Password Validator
 export const passwordValidator = (password) => {
-  const regExp = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*()]).{8,}/
+  const regExp = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9_]{8,}$/
   const validPassword = regExp.test(password)
 
   return (
     validPassword ||
-    'The password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.'
+    'The password must be at least 8 characters long and include at least one letter, one number, and can only include underscore (_).'
   )
 }
 
@@ -145,7 +144,7 @@ export const compareDatesValidator = (
   date2,
   operator,
   date1Name = 'first',
-  date2Name = 'second'
+  date2Name = 'second',
 ) => {
   if (isEmpty(date1)) return true
 
@@ -165,7 +164,7 @@ export const compareDatesValidator = (
     '>': `The ${date1Name} date must be later than the ${date2Name} date`,
     '>=': `The ${date1Name} date must be the same or later than the ${date2Name} date`,
     '<': `The ${date1Name} date must be earlier than the ${date2Name} date`,
-    '<=': `The ${date1Name} date must be the same or earlier than the ${date2Name} date`
+    '<=': `The ${date1Name} date must be the same or earlier than the ${date2Name} date`,
   }
 
   if (!(operator in messages)) return `Invalid operator: ${operator}`
@@ -178,7 +177,7 @@ export const compareDatesValidator = (
     '>': time1 > time2,
     '>=': time1 >= time2,
     '<': time1 < time2,
-    '<=': time1 <= time2
+    '<=': time1 <= time2,
   }
 
   return comparisons[operator] || messages[operator]
